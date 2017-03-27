@@ -1,105 +1,42 @@
-/*
- * Copyright (C) 2016 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.example.android.miwok;
 
 /**
- * {@link Word} represents a vocabulary word that the user wants to learn.
- * It contains resource IDs for the default translation, Miwok translation, audio file, and
- * optional image file for that word.
+ * Created by Sean on 3/26/2017.
  */
+
 public class Word {
+    ///Default language translation for word
+    private String mDefaultTranslation;
 
-    /** String resource ID for the default translation of the word */
-    private int mDefaultTranslationId;
+    /// Miwok translation for word
+    private String mMiwokTranslation;
 
-    /** String resource ID for the Miwok translation of the word */
-    private int mMiwokTranslationId;
+    /// int that stores image ID
+    private int mImageResourceId = 0;
 
-    /** Audio resource ID for the word */
-    private int mAudioResourceId;
-
-    /** Image resource ID for the word */
-    private int mImageResourceId = NO_IMAGE_PROVIDED;
-
-    /** Constant value that represents no image was provided for this word */
-    private static final int NO_IMAGE_PROVIDED = -1;
-
-    /**
-     * Create a new Word object.
-     *
-     * @param defaultTranslationId is the string resource ID for the word in a language that the
-     *                             user is already familiar with (such as English)
-     * @param miwokTranslationId is the string resource Id for the word in the Miwok language
-     * @param audioResourceId is the resource ID for the audio file associated with this word
-     */
-    public Word(int defaultTranslationId, int miwokTranslationId, int audioResourceId) {
-        mDefaultTranslationId = defaultTranslationId;
-        mMiwokTranslationId = miwokTranslationId;
-        mAudioResourceId = audioResourceId;
+    ///Create a new Word object, assign default and Miwok translations
+    public Word(String defaultWord, String miwokWord){
+        mDefaultTranslation = defaultWord;
+        mMiwokTranslation = miwokWord;
     }
 
-    /**
-     * Create a new Word object.
-     *
-     * @param defaultTranslationId is the string resource ID for the word in a language that the
-     *                             user is already familiar with (such as English)
-     * @param miwokTranslationId is the string resource Id for the word in the Miwok language
-     * @param imageResourceId is the drawable resource ID for the image associated with the word
-     * @param audioResourceId is the resource ID for the audio file associated with this word
-     */
-    public Word(int defaultTranslationId, int miwokTranslationId, int imageResourceId,
-                int audioResourceId) {
-        mDefaultTranslationId = defaultTranslationId;
-        mMiwokTranslationId = miwokTranslationId;
+    public Word(String defaultWord, String miwokWord, int imageResourceId){
+        mDefaultTranslation = defaultWord;
+        mMiwokTranslation = miwokWord;
         mImageResourceId = imageResourceId;
-        mAudioResourceId = audioResourceId;
     }
 
-    /**
-     * Get the string resource ID for the default translation of the word.
-     */
-    public int getDefaultTranslationId() {
-        return mDefaultTranslationId;
+    ///Get default translation
+    public String getDefaultTranslation(){
+        return mDefaultTranslation;
     }
 
-    /**
-     * Get the string resource ID for the Miwok translation of the word.
-     */
-    public int getMiwokTranslationId() {
-        return mMiwokTranslationId;
+    ///get miwok translation
+    public String getMiwokTranslation(){
+        return mMiwokTranslation;
     }
 
-    /**
-     * Return the image resource ID of the word.
-     */
-    public int getImageResourceId() {
+    public int getImageResourceId(){
         return mImageResourceId;
-    }
-
-    /**
-     * Returns whether or not there is an image for this word.
-     */
-    public boolean hasImage() {
-        return mImageResourceId != NO_IMAGE_PROVIDED;
-    }
-
-    /**
-     * Return the audio resource ID of the word.
-     */
-    public int getAudioResourceId() {
-        return mAudioResourceId;
     }
 }
